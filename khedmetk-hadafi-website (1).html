@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمتك هدفي - خدمات إلكترونية احترافية</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .stat-box {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section {
+            background: white;
+            padding: 50px 30px;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .section-title {
+            font-size: 2.2em;
+            color: #1e40af;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #1e40af);
+            border-radius: 2px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #3b82f6, #1e40af);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+        }
+        
+        .service-card h3 {
+            color: #1e40af;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .service-icon {
+            font-size: 1.8em;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .service-card p {
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .testimonial-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+            border-right: 5px solid #3b82f6;
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 4em;
+            color: #3b82f6;
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            color: #4b5563;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #3b82f6, #1e40af);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            color: #1e40af;
+            font-size: 1.1em;
+            margin-bottom: 3px;
+        }
+        
+        .author-info p {
+            color: #6b7280;
+            font-size: 0.9em;
+        }
+        
+        .rating {
+            color: #fbbf24;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .chart-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .chart-box {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .chart-box h3 {
+            color: #1e40af;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+        
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 200px;
+            margin-top: 20px;
+        }
+        
+        .bar {
+            width: 60px;
+            background: linear-gradient(to top, #3b82f6, #60a5fa);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .bar:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+        
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9em;
+            color: #4b5563;
+            white-space: nowrap;
+        }
+        
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            color: #1e40af;
+        }
+        
+        .progress-bar {
+            background: #e5e7eb;
+            height: 25px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #3b82f6, #60a5fa);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: width 2s ease;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .feature-box {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #f8fafc, #ffffff);
+            border-radius: 15px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .feature-box:hover {
+            border-color: #3b82f6;
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+        }
+        
+        .feature-box h3 {
+            color: #1e40af;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .feature-box p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+            cursor: pointer;
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        
+        footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+            padding: 50px 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        footer h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        footer p {
+            line-height: 1.8;
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        .contact-info {
+            margin-top: 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2em; }
+            .section-title { font-size: 1.8em; }
+            .stats { gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🎯 خدمتك هدفي</h1>
+        <p>شريكك الموثوق لجميع الخدمات الإلكترونية والحكومية</p>
+        <div class="stats">
+            <div class="stat-box">
+                <span class="stat-number">5000+</span>
+                <span class="stat-label">عميل راضٍ</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">98%</span>
+                <span class="stat-label">نسبة الرضا</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">دعم متواصل</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="section">
+            <h2 class="section-title">لماذا نحن الخيار الأفضل؟</h2>
+            <div class="features">
+                <div class="feature-box">
+                    <div class="feature-icon">⚡</div>
+                    <h3>سرعة في الإنجاز</h3>
+                    <p>نضمن لك إنجاز معاملتك في وقت قياسي بدون تأخير</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🔒</div>
+                    <h3>أمان وموثوقية</h3>
+                    <p>بياناتك محمية بأعلى معايير الأمان والخصوصية</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">💰</div>
+                    <h3>أسعار تنافسية</h3>
+                    <p>أفضل الأسعار في السوق مع جودة خدمة عالية</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">👨‍💼</div>
+                    <h3>فريق محترف</h3>
+                    <p>فريق ذو خبرة واسعة في جميع المعاملات الحكومية</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">📊 إحصائيات الأداء</h2>
+            <div class="chart-container">
+                <div class="chart-box">
+                    <h3>توزيع الخدمات الأكثر طلباً</h3>
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 85%;">
+                            <span class="bar-value">85%</span>
+                            <span class="bar-label">الإقامات</span>
+                        </div>
+                        <div class="bar" style="height: 70%;">
+                            <span class="bar-value">70%</span>
+                            <span class="bar-label">أبشر</span>
+                        </div>
+                        <div class="bar" style="height: 60%;">
+                            <span class="bar-value">60%</span>
+                            <span class="bar-label">التأشيرات</span>
+                        </div>
+                        <div class="bar" style="height: 50%;">
+                            <span class="bar-value">50%</span>
+                            <span class="bar-label">الأجور</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-box">
+                    <h3>معدلات رضا العملاء</h3>
+                    <div style="margin-top: 30px;">
+                        <p style="text-align: right; margin-bottom: 5px; color: #1e40af; font-weight: bold;">جودة الخدمة</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 98%;">98%</div>
+                        </div>
+                        
+                        <p style="text-align: right; margin-bottom: 5px; color: #1e40af; font-weight: bold;">سرعة الإنجاز</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 95%;">95%</div>
+                        </div>
+                        
+                        <p style="text-align: right; margin-bottom: 5px; color: #1e40af; font-weight: bold;">الدعم الفني</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 97%;">97%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">خدماتنا المتميزة</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3><span class="service-icon">📋</span> إصدار وتجديد الإقامات</h3>
+                    <p>نساعدك في إصدار وتجديد إقامة العمالة بسرعة وسهولة. إنجاز سريع بدون تعقيد وبأسعار مناسبة.</p>
+                    <a href="https://wa.me/966590017101?text=مرحباً، أرغب في الاستفسار عن خدمة إصدار وتجديد الإقامات" class="whatsapp-btn">
+                        <span>💬</span> تواصل معنا
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3><span class="service-icon">🔄</span> نقل كفالة</h3>
+                    <p>نقل الكفالة بكل احترافية وسرعة. نوفر لك الوقت والجهد مع ضمان إتمام الإجراءات بشكل صحيح.</p>
+                    <a href="https://wa.me/966590017101?text=مرحباً، أرغب في الاستفسار عن خدمة نقل الكفالة" class="whatsapp-btn">
+                        <span>💬</span> تواصل معنا
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3><span class="service-icon">🏛️</span> خدمات أبشر الكاملة</h3>
+                    <p>جميع خدمات منصة أبشر متوفرة لديكم. نسهل عليك الوصول لجميع الخدمات الحكومية الإلكترونية.</p>
+                    <a href="https://wa.me/966590017101?text=مرحباً، أرغب في الاستفسار عن خدمات أبشر" class="whatsapp-btn">
+                        <span>💬</span> تواصل معنا
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3><span class="service-icon">⚠️</span> إزالة ملاحظات حماية الأجور</h3>
+                    <p>إزالة ملاحظات حماية الأجور بدون اشتراك مدد، حتى للعمال في إجازة أو حالة هروب. خدمة مميزة وفعالة.</p>
+                    <a href="https://wa.me/966590017101?text=مرحباً، أرغب في الاستفسار عن إزالة ملاحظات حماية الأجور" class="whatsapp-btn">
+                        <span>💬</span> تواصل معنا
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3><span class="service-icon">✈️</span> تأشيرات الخروج والعودة</h3>
+                    <p>إصدار تأشيرات خروج وعودة أو خروج نهائي. إنجاز سريع بدون انتظار وبأفضل الأسعار.</p>
+                    <a href="https://wa.me/966590017101?text=مرحباً، أرغب في الاستفسار عن تأشيرات الخروج والعودة" class="whatsapp-btn">
+                        <span>💬</span> تواصل معنا
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3><span class="service-icon">🔧</span> تجديد إقامة منتهية يدوياً</h3>
+                    <p>تجديد الإقامات المنتهية من خلال الجوازات يدوياً. نحل مشكلتك بسرعة واحترافية.</p>
+                    <a href="https://wa.me/966590017101?text=مرحباً، أرغب في الاستفسار عن تجديد إقامة منتهية" class="whatsapp-btn">
+                        <span>💬</span> تواصل معنا
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3><span class="service-icon">📊</span> إصدار تقارير المقيم</h3>
+                    <p>تقارير المقيم الشاملة جاهزة في وقت قياسي. معلومات دقيقة ومحدثة لجميع احتياجاتك.</p>
+                    <a href="https://wa.me/966590017101?text=مرحباً، أرغب في الاستفسار عن تقارير المقيم" class="whatsapp-btn">
+                        <span>💬</span> تواصل معنا
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3><span class="service-icon">🏥</span> الكشف الطبي والشهادات</h3>
+                    <p>كشف طبي لإصدار الإقامة أو الرخصة، إجازات مرضية، وإصدار شهادات صحية. خدمة سريعة ومعتمدة.</p>
+                    <a href="https://wa.me/966590017101?text=مرحباً، أرغب في الاستفسار عن الكشف الطبي والشهادات" class="whatsapp-btn">
+                        <span>💬</span> تواصل معنا
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3><span class="service-icon">🚗</span> خدمات النقل والسائقين</h3>
+                    <p>جميع خدمات النقل والسائقين متوفرة. نسهل عليك إجراءات التراخيص والتجديدات.</p>
+                    <a href="https://wa.me/966590017101?text=مرحباً، أرغب في الاستفسار عن خدمات النقل والسائقين" class="whatsapp-btn">
+                        <span>💬</span> تواصل معنا
+                    </a>
+                </div>
+                
+                <div class="service-card">
+                    <h3><span class="service-icon">🛡️</span> التأمينات الاجتماعية</h3>
+                    <p>تسجيل وتحديث بيانات التأمينات الاجتماعية. نضمن لك الامتثال الكامل للأنظمة.</p>
+                    <a href="https://wa.me/966590017101?text=مرحباً، أرغب في الاستفسار عن خدمات التأمينات" class="whatsapp-btn">
+                        <span>💬</span> تواصل معنا
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">⭐ آراء عملائنا</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        خدمة ممتازة وسريعة جداً. أنجزوا لي معاملة تجديد الإقامة في أقل من يومين. احترافية عالية وتعامل راقي. أنصح الجميع بالتعامل معهم.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">م</div>
+                        <div class="author-info">
+                            <h4>محمد العتيبي</h4>
+                            <p>رجل أعمال - الرياض</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        صراحة فاقوا التوقعات! ساعدوني في حل مشكلة ملاحظات حماية الأجور بعد ما تعبت مع مكاتب كثيرة. فريق محترف وأسعار معقولة جداً.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">خ</div>
+                        <div class="author-info">
+                            <h4>خالد السبيعي</h4>
+                            <p>صاحب مؤسسة - جدة</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        تعاملت معهم أكثر من مرة وما شاء الله دائماً متميزين. سرعة في الرد والتنفيذ، وأسعارهم أفضل من السوق. الله يوفقهم ويزيدهم من فضله.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ع</div>
+                        <div class="author-info">
+                            <h4>عبدالله القحطاني</h4>
+                            <p>مهندس - الدمام</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        مكتب موثوق ومضمون. أنجزوا لي معاملة نقل كفالة بدون أي مشاكل وبسرعة قياسية. التواصل معهم سهل والرد سريع. أشكرهم جزيل الشكر.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ف</div>
+                        <div class="author-info">
+                            <h4>فهد الدوسري</h4>
+                            <p>مدير مشاريع - الخبر</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        والله ما قصروا! كنت محتاج تجديد إقامة بشكل عاجل وأنجزوها لي في وقت قياسي. فريق متعاون جداً وصادقين في المواعيد. جزاهم الله خير.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">س</div>
+                        <div class="author-info">
+                            <h4>سعد الشمري</h4>
+                            <p>مقاول - الطائف</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="rating">★★★★★</div>
+                    <p class="testimonial-text">
+                        خدمة ممتازة وأسعار في المتناول. تعاملت معهم في أكثر من خدمة وكلها تمت بنجاح. الحمدلله وجدت مكتب أثق فيه لكل معاملاتي.
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ن</div>
+                        <div class="author-info">
+                            <h4>ناصر المطيري</h4>
+                            <p>صاحب محل تجاري - أبها</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <h2>من نحن</h2>
+        <p>
+            خدمتك هدفي هو مكتبك الموثوق لجميع الخدمات الإلكترونية والحكومية في المملكة العربية السعودية.
+            نقدم خدمات احترافية بأسعار منافسة وإنجاز سريع. ثقتكم هي هدفنا الأول.
+        </p>
+        <div class="contact-info">
+            📞 للتواصل والاستفسار: +966590017101
+        </div>
+    </footer>
+    
+    <a href="https://wa.me/966590017101?text=مرحباً، أرغب في الاستفسار عن خدماتكم" class="floating-whatsapp">
+        💬
+    </a>
+</body>
+</html>
